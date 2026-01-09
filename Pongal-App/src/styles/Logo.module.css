@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Odibee+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+SC:ital,wght@0,400;0,500;0,700;0,800;0,900;1,400;1,500;1,700;1,800;1,900&family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Odibee+Sans&display=swap');
+.main {
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  opacity: 0;
+  transition: all 2s ease;
+  background: radial-gradient(circle at center,rgb(48, 20, 0)60%);
+
+}
+.main.show{
+  opacity: 1;
+  transform: scale(0.8);
+}
+.main.hide {
+  opacity: 0;
+  transform: scale(0.7);
+}
+.main .animIcon{
+    background-color: transparent;
+filter: 
+  drop-shadow(7px 7px 15px rgb(241, 205, 138))
+  drop-shadow(-7px -7px 15px rgb(241, 205, 138));
+}
+.wish{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.wish h1{
+  letter-spacing: 2px;
+  font-family: "Alegreya SC", serif;
+  font-weight: 600;
+  font-style: normal;
+  
+  background: linear-gradient(90deg,rgb(241, 205, 138),rgb(236, 159, 4),rgb(241, 205, 138));
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 1.5s infinite linear;
+}
+@keyframes shimmer{
+  from{
+     background-position: 0%;
+  }
+  to{
+    background-position: 200%;
+  }
+}
+.wish h3{
+  max-width: 500px;
+  font-size: 1.350rem;
+  letter-spacing: 1px;
+  font-family: "Amaranth", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: rgb(255, 204, 136);
+  text-align: center;
+}
+.load {
+  position: relative;
+  display: block;         /* block so width adjusts on mobile */
+  padding: 0 10px;
+  border-radius: 30px;
+  background-color: rgb(255, 255, 255);
+  overflow: hidden;
+  width: 90%;             /* responsive width */
+  max-width: 400px;       /* desktop limit */
+  height: 20px;           /* visible bar height */
+  box-shadow: 0px 0px 6px rgb(238, 198, 151),
+              -0px -0px 6px rgb(238, 198, 151); 
+  margin-top: 10px;
+}
+.loading {
+  position: absolute;
+  inset: 0;
+  width: 0%;
+  height: 100%;               /* fill parent height */
+  background: radial-gradient(circle at center, rgb(238, 198, 151) 0%, rgb(134, 68, 20) 40%);
+  transition: width 0.3s ease-in-out forwards;  /* smooth mobile + desktop */
+  z-index: 1;
+}
+.per {
+  position: absolute;    /* absolute inside parent */
+  top: 0;
+  left: 50%;             /* center */
+  transform: translateX(-50%);
+  color: rgb(71, 36, 3);
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: "Amaranth", sans-serif;
+  line-height: 20px;     /* same as .load height */
+  z-index: 2;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .load {
+    height: 25px;           /* bigger bar on small screens */
+  }
+  .loading{
+      background: radial-gradient(circle at center,rgb(238, 198, 151) 0%,rgb(134, 68, 20)40%);
+  }
+  .per {
+    font-family: "Amaranth", sans-serif;
+    font-size: 1rem;
+  }
+}
+

@@ -1,0 +1,8 @@
+node_modules
+backend/node_modules
+Pongal-App/node_modules
+
+.env
+backend/.env
+Pongal-App/dist
+Pongal-App/build

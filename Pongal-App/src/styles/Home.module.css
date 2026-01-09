@@ -1,0 +1,60 @@
+.home{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.snowContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Snowflake style */
+.snowflake {
+  position: absolute;
+  top: -10px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #ffffff;
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  /* horizontal sway variable */
+}
+
+/* Snowfall animation with random sway */
+@keyframes fall {
+  0% {
+    transform: translateY(-10px) translateX(0);
+  }
+  50% {
+    transform: translateY(50vh) translateX(var(--sway, 5px));
+  }
+  100% {
+    transform: translateY(100vh) translateX(calc(var(--sway, 5px) * -1));
+  }
+}
+.innerHome {
+  width: 100%;
+  min-height: 100vh;
+  max-width: 1400px;
+  background: radial-gradient(circle at center,rgb(48, 20, 0)60%);
+  padding: 16px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px){
+  .innerHome {
+    width: 100%;
+    min-height: 100vh;
+  }
+}
+
+
+
+
+
