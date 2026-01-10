@@ -87,10 +87,8 @@ function MainPage(){
   }
 
   try {
-    const res = await axios.post(
-      "http://localhost:5000/api/users",
-      form
-    );
+    const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/users`, form);
+
 
     console.log("Saved in DB:", res.data);
 
