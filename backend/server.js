@@ -8,7 +8,10 @@ const userRoutes = require("./routes/userRoutes");
 const app = express();
 
 // middleware
-app.use(cors());
+app.use(cors({
+  origin: "*", // or 'https://pongal-wish-2.vercel.app'
+}));
+
 app.use(express.json());
 
 // DB connect
