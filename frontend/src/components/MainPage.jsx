@@ -88,10 +88,9 @@ function MainPage(){
 
   try {
     const res = await axios.post(
-  `${import.meta.env.VITE_API_URL}/api/users`,
-  form
-);
-
+      "http://localhost:5000/api/users",
+      form
+    );
 
     console.log("Saved in DB:", res.data);
 
@@ -276,8 +275,7 @@ function MainPage(){
         </button>
 
       </div>
-    
-      <div></div>
+  
       {/* Comment Box */}
       {showCommentBox && (
         <div className={styles.overlay}>
