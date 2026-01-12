@@ -89,7 +89,6 @@ function MainPage(){
   try {
     const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/users`, form);
 
-
     console.log("Saved in DB:", res.data);
 
     setShowPongalWish(true);
@@ -176,8 +175,7 @@ function MainPage(){
     <p>Your smile and love made this moment even more special!</p>
   </div>
 ) : (
-  <form
-    onSubmit={handleSubmit}
+  <form onSubmit={handleSubmit}
     className={`${styles.Form} ${styles.fadeBox}`}
     autoComplete="off"
   >
