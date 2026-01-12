@@ -8,17 +8,7 @@ const userRoutes = require("./routes/userRoutes");
 const app = express();
 
 // middleware
-app.use(cors({
-  origin: [
-    "https://pongal-wish.vercel.app",
-    "https://pongal-wish-2.vercel.app"
-  ],
-  methods: ["GET", "POST", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: false
-}));
-
-app.options("*", cors());
+app.use(cors());
 
 app.use(express.json());
 
