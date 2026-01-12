@@ -107,7 +107,7 @@ function MainPage(){
 };
 
 
-    const targetTime=new Date("2026-01-08T20:23:00").getTime();
+    const targetTime=new Date("2026-01-15T00:00:00").getTime();
 
     const [timeLeft, setTimeLeft] = useState({
     days: 0,
