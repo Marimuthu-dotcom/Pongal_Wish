@@ -312,27 +312,30 @@ padding: 10px;
 cursor: pointer;
 }
 .heart {
-position: fixed;
-bottom: 110px;
-transform: translateX(-50%);
-animation-name: floatUpSpread;
-animation-timing-function: ease-out;
-animation-fill-mode: forwards;
-pointer-events: none;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  animation: heartBurst ease-out forwards;
+  z-index: 99;
 }
 
-@keyframes floatUpSpread {
-0% {
-transform: translate(-50%, 0) scale(1);
-opacity: 1;
-}
-100% {
-transform: translate(
-calc(-80% + var(--xMove)),
--320px
-) scale(1.4);
-opacity: 0;
-}
+@keyframes heartBurst {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+  translate(
+    calc(-50% + var(--xMove)),
+    calc(-50% + var(--yMove))
+  )
+      scale(0.3);
+  }
 }
 
 .overlay {

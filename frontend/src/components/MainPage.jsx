@@ -14,6 +14,8 @@ function MainPage(){
   const [showPongalWish,setShowPongalWish]=useState(false);
   const [fireworks, setFireworks] = useState([]);
   const [startFireworks, setStartFireworks] = useState(false);
+  const [comment, setComment] = useState("");
+
   
 
   /* 🔥 FIREWORK EFFECT (ONLY THIS IS NEW) */
@@ -46,24 +48,24 @@ function MainPage(){
     return () => clearInterval(interval);
   }, [startFireworks]);
 
+const handleLike = () => {
+  const newHearts = Array.from({ length: 60 }).map(() => {
+    const angle = Math.random() * 360;
+    const distance = Math.random() * 600 + 200;
 
-
-
-  const handleLike = () => {
-  const newHearts = Array.from({ length: 50 }).map(() => ({
-    id: Math.random(),
-    left: 50, // CENTER
-    size: Math.random() * 18 + 18,
-    duration: Math.random() * 1.5 + 1.2, // 1.2s – 2.7s (LONGER)
-    delay: Math.random() * 0.5,
-    xMove: Math.random() * 400 - 150, // -100px to +100px (SPREAD)
-  }));
+    return {
+      id: Math.random(),
+      left: 50,
+      size: Math.random() * 18 + 18,
+      duration: Math.random() * 1.8 + 1.2,
+      delay: Math.random() * 0.4,
+      xMove: Math.cos(angle * Math.PI / 180) * distance,
+      yMove: Math.sin(angle * Math.PI / 180) * distance,
+    };
+  });
 
   setHearts(newHearts);
-
-  setTimeout(() => {
-    setHearts([]);
-  }, 3500);
+  setTimeout(() => setHearts([]), 3500);
 };
 
 
@@ -220,13 +222,14 @@ function MainPage(){
   <span
     key={heart.id}
     className={styles.heart}
-    style={{
-      left: `${heart.left}%`,
-      fontSize: `${heart.size}px`,
-      animationDuration: `${heart.duration}s`,
-      animationDelay: `${heart.delay}s`,
-      "--xMove": `${heart.xMove}px`,
-    }}
+   style={{
+  left: `${heart.left}%`,
+  fontSize: `${heart.size}px`,
+  animationDuration: `${heart.duration}s`,
+  animationDelay: `${heart.delay}s`,
+  "--xMove": `${heart.xMove}px`,
+  "--yMove": `${heart.yMove}px`,
+}}
   >
     ❤️
   </span>
@@ -279,11 +282,25 @@ function MainPage(){
         animateComment ? styles.activecmd : ""
       }`}>
             <h3>Comments</h3>
-            <textarea placeholder="Write a comment..."></textarea>
-            <button onClick={() =>{ setAnimateComment(false);
-          setTimeout(() => setShowCommentBox(false), 300);
-            }}
-              >Close</button>
+            <textarea
+                  placeholder="Write a comment..."
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
+            ></textarea>
+            <button
+  onClick={() => {
+    if (comment.length > 0) {
+      console.log("Comment sent:", comment);
+      setComment("");
+    }
+
+    setAnimateComment(false);
+    setTimeout(() => setShowCommentBox(false), 300);
+  }}
+  >
+  {comment.length > 0 ? "Send" : "Close"}
+</button>
+
           </div>
         </div>
       )}
