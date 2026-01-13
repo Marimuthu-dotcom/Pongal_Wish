@@ -12,6 +12,15 @@ router.post("/", async (req, res) => {
     }
 
     // check duplicate email
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+          return res.status(200).json({
+            message: "Email already exists",
+            alreadyExists: true
+  });
+}
+
+
     const user = await User.create({
       name,
       email,
@@ -20,7 +29,7 @@ router.post("/", async (req, res) => {
 
     res.status(201).json({
       message: "User saved successfully 🎉",
-      user,
+      alreadyExists: false
     });
   } catch (err) {
      console.error(err);  // <-- ADD THIS

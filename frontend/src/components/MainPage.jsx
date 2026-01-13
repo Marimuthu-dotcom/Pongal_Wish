@@ -79,21 +79,28 @@ const handleLike = () => {
   setShowLogin(true);
 };
 
-  const handleSubmit = async (e) => {
+ const handleSubmit = async (e) => {
   e.preventDefault();
 
   const now = Date.now();
-
   if (now < targetTime) {
     setLoginBlock(true);
     return;
   }
 
   try {
-    const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/users`, form);
+    const res = await axios.post(
+      `${import.meta.env.VITE_BACKEND_URL}/api/users`,
+      form
+    );
 
-    console.log("Saved in DB:", res.data);
+    if (res.data.alreadyExists) {
+      alert("Email already exists ❤️ Welcome back!");
+    } else {
+      alert("Welcome 🎉 Your data is saved");
+    }
 
+    // 🔥 COMMON FOR BOTH CASE
     setShowPongalWish(true);
     setStartFireworks(true);
 
@@ -103,11 +110,13 @@ const handleLike = () => {
     }, 15000);
 
     setForm({ name: "", email: "", password: "" });
+
   } catch (err) {
-    console.log(err.response?.data || err.message);
-    alert(err.response?.data?.message || "Error saving data");
+    console.log(err);
+    alert("Something went wrong");
   }
 };
+
 
 
     const targetTime=new Date("2026-01-11T10:00:00").getTime();
