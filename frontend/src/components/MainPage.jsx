@@ -138,6 +138,21 @@ const handleLike = () => {
     },1000);
         return()=>clearInterval(interval);
     },[]);
+
+    useEffect(() => {
+  const disableScroll =
+    hearts.length > 0 ||
+    fireworks.length > 0 ||
+    showCommentBox;
+
+  document.body.style.overflowY = disableScroll ? "hidden" : "auto";
+
+  return () => {
+    document.body.style.overflowY = "auto";
+  };
+}, [hearts, fireworks, showCommentBox]);
+
+
     return(
     <div className={styles.mainPage}>
         <div className={styles.Box}>
