@@ -100,7 +100,7 @@ const handleLike = () => {
     setTimeout(() => {
       setShowPongalWish(false);
       setShowThankYou(true);
-    }, 20000);
+    }, 10000);
 
     setForm({ name: "", email: "", password: "" });
   } catch (err) {
