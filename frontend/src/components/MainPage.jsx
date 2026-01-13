@@ -50,7 +50,7 @@ function MainPage(){
   }, [startFireworks]);
 
 const handleLike = () => {
-  const newHearts = Array.from({ length: 60 }).map(() => {
+  const newHearts = Array.from({ length: 80 }).map(() => {
     const angle = Math.random() * 360;
     const distance = Math.random() * 600 + 200;
 
@@ -58,7 +58,7 @@ const handleLike = () => {
       id: Math.random(),
       left: 50,
       size: Math.random() * 18 + 18,
-      duration: Math.random() * 1.8 + 1.2,
+      duration: 3.5,
       delay: Math.random() * 0.4,
       xMove: Math.cos(angle * Math.PI / 180) * distance,
       yMove: Math.sin(angle * Math.PI / 180) * distance,
@@ -247,7 +247,7 @@ const handleLike = () => {
   "--yMove": `${heart.yMove}px`,
 }}
   >
-    <FaHeart />
+    <FaHeart style={{color:"pink"}}/>
   </span>
 ))}
 {/* 🔥 FIREWORK RENDER */}
