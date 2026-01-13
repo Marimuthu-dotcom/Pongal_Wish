@@ -1,7 +1,8 @@
 import {useState,useEffect} from "react";
 import styles from "../styles/MainPage.module.css";
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import axios from 'axios'; 
+import axios from 'axios';
+import { FaHeart } from "react-icons/fa"; 
 function MainPage(){
   const [showLogin,setShowLogin]=useState(false);
   const [visitorName,setVisitorName]=useState("");
@@ -246,7 +247,7 @@ const handleLike = () => {
   "--yMove": `${heart.yMove}px`,
 }}
   >
-    ❤️
+    <FaHeart />
   </span>
 ))}
 {/* 🔥 FIREWORK RENDER */}
