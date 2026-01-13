@@ -11,32 +11,26 @@ router.post("/", async (req, res) => {
       return res.status(400).json({ message: "All fields required" });
     }
 
-    // check duplicate email
     const existingUser = await User.findOne({ email });
+
     if (existingUser) {
-          return res.status(200).json({
-            message: "Email already exists",
-            alreadyExists: true
-  });
-}
+      return res.status(200).json({
+        message: "Email already exists",
+        alreadyExists: true
+      });
+    }
 
-
-    const user = await User.create({
-      name,
-      email,
-      password,
-    });
+    await User.create({ name, email, password });
 
     res.status(201).json({
       message: "User saved successfully 🎉",
       alreadyExists: false
     });
   } catch (err) {
-     console.error(err);  // <-- ADD THIS
-  res.status(500).json({
-    message: err.message || "Server error"
-  });
+    console.error(err);
+    res.status(500).json({ message: "Server error" });
   }
 });
+
 
 module.exports = router;
