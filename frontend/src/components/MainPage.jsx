@@ -97,7 +97,7 @@ const handleLike = () => {
     if (res.data.alreadyExists) {
       alert("Email already exists ❤️ Welcome back!");
     } else {
-      alert("Welcome 🎉 Your data is saved");
+      alert("Welcome 🎉Your data is saved");
     }
 
     // 🔥 COMMON FOR BOTH CASE
